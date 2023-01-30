@@ -13,6 +13,8 @@ namespace Microsoft.Solutions.PatientHub.RealtimeInferenceService.Model
     public class PatientData
     {
         public string race { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string gender { get; set; }
         public string age { get; set; }
         public string weight { get; set; }
