@@ -17,11 +17,12 @@ Start by deploying the required resources to Azure.(The button will not deploy A
 ## Instructions
 
 ### Step 1. Download Files and Install VSCode Extension
+
 Clone or download this repository and navigate to the project's root directory
 
-Create a Azure Functions in VSCode with [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
+### Step 2. Follow the instructions
 
-### Step 2. Follow the instructions with some changes
+Create a Azure Functions in VSCode with [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 
 [Create Azure Functions - Instructions Step by Step](Create_instructions/Readme.md)
 
