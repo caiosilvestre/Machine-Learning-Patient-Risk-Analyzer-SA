@@ -28,5 +28,5 @@ Create a Azure Functions in VSCode with [Azure Functions extension](https://mark
 
 
 
-## 👽 Autor
+## Autor
 - [@caiosilvestre](https://www.github.com/caiosilvestre)
