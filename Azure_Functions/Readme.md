@@ -23,6 +23,8 @@ Create a Azure Functions in VSCode with [Azure Functions extension](https://mark
 ### Step 2. Follow the instructions with some changes
 [Create Azure Functions - Instructions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=python)
 
+[Create Azure Functions - Instructions Step by Step](Create_instructions/Readme.md)
+
 * In step 4. on link select `Azure Cosmo DB trigger`
 
 
