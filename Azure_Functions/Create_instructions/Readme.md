@@ -63,5 +63,5 @@ Function is created and you can use debug in vscode for run the function as Loca
 
 Install [Azure Storage Emulator](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-emulator#get-the-storage-emulator) for run LocalMode in Debug
 
-## 👽 Autor
+## Author
 - [@caiosilvestre](https://www.github.com/caiosilvestre)
