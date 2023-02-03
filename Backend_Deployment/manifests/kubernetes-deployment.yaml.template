@@ -88,27 +88,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: changefeedwatcher
-spec:
- replicas: 3
- selector:
-  matchLabels:
-   app: changefeedwatcher
- template:
-  metadata:
-   labels:
-    app: changefeedwatcher
-  spec:
-    containers:
-    - name: changefeedwatcher
-      image: {acrName}.azurecr.io/patienthub/changefeedwatcher
-      ports:
-      - containerPort: 80
-      imagePullPolicy: Always
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
  name: tts
 spec:
  replicas: 1
