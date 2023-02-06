@@ -2,7 +2,7 @@ ___
 ___
 ![](Resource_Deployment/img/warning.png)
 ### Warning
-This changes not include on deploy with button. You will do manually
+This changes not include on deploy button. You will do manually
 
 # Changes
 
