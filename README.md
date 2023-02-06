@@ -1,8 +1,26 @@
+___
+___
+![](Resource_Deployment/img/warning.png)
+### Warning
+This changes not include on deploy with button. You will do manually
+
+# Changes
+
+|   Problems    |   Solutions   | Changes|
+| ------------- | ------------- |--------|
+| API Patient return ML erro  |Add 2 columns on PatientData.cs|Add FirstName and LastName on PatientData.cs|
+| Container ChangefeedWatcher not run| Replace with Azure functions | Add [Azure Function](Azure_Functions/Readme.md) with CosmoDB Trigger |
+| No Form recognizer Explanation | Add Explanation | ... |
+| No Power Virtual Agents Explanation | Add Explanation | ... |
+
+
+___
+___
 ![](Resource_Deployment/img/banner.png)
 
-# About this repository 
-Machine Learning Patient Risk Analyzer Solution Accelerator is an end-to-end (E2E) healthcare app that leverages ML prediction models (e.g., Diabetes Mellitus (DM) patient 30-day re-admission, breast cancer risk, etc.) to demonstrate how these models can provide key insights for both physicians and patients.  Patients can easily access their appointment and care history with infused cognitive services through a conversational interface.  
-  
+# About this repository
+Machine Learning Patient Risk Analyzer Solution Accelerator is an end-to-end (E2E) healthcare app that leverages ML prediction models (e.g., Diabetes Mellitus (DM) patient 30-day re-admission, breast cancer risk, etc.) to demonstrate how these models can provide key insights for both physicians and patients.  Patients can easily access their appointment and care history with infused cognitive services through a conversational interface.
+
 In addition to providing new insights for both doctors and patients, the app also provides the Data Scientist/IT Specialist with one-click experiences for registering and deploying a new or existing model to Azure Kubernetes Clusters, and best practices for maintaining these models through Azure MLOps.
 
 ## Prerequisites
@@ -14,12 +32,12 @@ In order to successfully complete this solution accelerator, you will need to ha
 4. [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 5. [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows) - Required for Debugging in local or containerizing codes in the Deployment process
 
-## Architecture Overview 
+## Architecture Overview
 The architecture diagram below details what you will be building for this Solution Accelerator.
 
 ![Architecture Diagram](./Resource_Deployment/img/ReferenceArchitecture.png)
 
-## Azure Development and Analytics Platforms 
+## Azure Development and Analytics Platforms
 The directions provided for this repository assume fundemental working knowledge of Azure, Azure Synapse Analytics, Azure Machine Learning and Azure Cognitive Services
 1. [Azure Machine Learning](https://azure.microsoft.com/en-us/services/machine-learning/)
 2. [Azure Synapse Analytics](https://azure.microsoft.com/en-us/services/synapse-analytics/)
@@ -33,7 +51,7 @@ The directions provided for this repository assume fundemental working knowledge
 ## Getting Started
 Start by deploying the [resources](./Resource_Deployment/ResourceDeployment.md) needed for this solution,
 
-1. Press Deploy Azure :  
+1. Press Deploy Azure :
 
     [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMachine-Learning-Patient-Risk-Analyzer-SA%2Fmain%2FResource_Deployment%2Fazuredeploy.json)
 
@@ -44,14 +62,14 @@ Start by deploying the [resources](./Resource_Deployment/ResourceDeployment.md) 
 ## [Resource Deployment](./Resource_Deployment/README.md)
 The resources in this folder can be used to deploy the required resources into your Azure Subscription. You can do this in the Azure Portal
 
-## [Analytics Deployment](./Analytics_Deployment) 
+## [Analytics Deployment](./Analytics_Deployment)
 This folder contains the Notebooks needed to complete this solution accelerator. Once you have deployed all the required resources from [Resource Deployment](./Resource_Deployment/README.md), run through the Notebooks following the instructions in Resource Deployment.
 
-## [Backend Deployment](./Backend_Deployment) 
-This folder contains all API services consumed via Power Automate.  
+## [Backend Deployment](./Backend_Deployment)
+This folder contains all API services consumed via Power Automate.
 As Architecture diagram shows all of services will be compiled and deployed in Azure Kuebernetes service with [deployment script](./Backend_Deployment/deployapplications.ps1)
 
-## [Frontend Deployment](./Frontend_Deployment) 
+## [Frontend Deployment](./Frontend_Deployment)
 This folder contains Dialog based Patient User Interface Applications(Power Virtual Agent) and related services.
 
 ## DISCLAIMER
@@ -96,8 +114,8 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## Trademarks
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
+trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
