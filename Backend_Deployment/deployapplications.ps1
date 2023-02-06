@@ -3,7 +3,7 @@
 
 Function ShowDisclaimer(){
     Write-Host "Agreement"
-    Write-Host "I have read all the desclaimers (https://github.com/microsoft/Machine-Learning-Patient-Risk-Analyzer-SA/README.md)" 
+    Write-Host "I have read all the desclaimers (https://github.com/microsoft/Machine-Learning-Patient-Risk-Analyzer-SA/README.md)"
     Write-Host "and license agreement(https://github.com/microsoft/Machine-Learning-Patient-Risk-Analyzer-SA/license.md)."
     Write-Host "I accept and agree to proceed. (Type [Y] for Yes or [N] for No and press enter)"
     return Read-Host "[Y] Yes [N] No (default is ""N"" )"
@@ -27,7 +27,7 @@ $resourcegroupName = Read-Host "resource group name"
 $containerRegistryName = Read-Host "container registry name"
 $kubernetesName = Read-Host "kubernetes registry name"
 $azurecosmosaccountName = Read-Host "Azure CosmosDB instance name"
-$azurecosmosdbDataBaseName = Read-Host "PatientHub CosmosDB DatabaseName" 
+$azurecosmosdbDataBaseName = Read-Host "PatientHub CosmosDB DatabaseName"
 $ttsSubscriptionKey = Read-Host "Speech Service Subscription Key"
 $ttsServiceRegion = Read-Host "Speech Service Region"
 $mlServiceURL = Read-Host "Deployed Realtime inference service URL in Azure ML Studio"
@@ -51,7 +51,7 @@ $loginServer = $acrList[1].Split(":")[1].Replace('"', '').Replace(',', '').Repla
 $registryName = $acrList[2].Split(":")[1].Replace('"', '').Replace(',', '').Replace(' ', '')
 
 $userName = $registryName
-$password = ( az acr credential show --name $userName | ConvertFrom-Json).passwords.value.Split(" ")[1] 
+$password = ( az acr credential show --name $userName | ConvertFrom-Json).passwords.value.Split(" ")[1]
 
 Write-Host "..... loginServer: '$loginServer'"
 Write-Host "..... registryName: '$registryName'"
@@ -78,12 +78,6 @@ $connectionString = az cosmosdb keys list `
 ((Get-Content -path src\Microsoft.Solutions.PatientHub.AppointmentService.Host\appsettings.json -Raw) -replace '{DatabaseName}', $azurecosmosdbDataBaseName) | Set-Content -Path src\Microsoft.Solutions.PatientHub.AppointmentService.Host\appsettings.json
 
 #
-# BatchInferenceService
-#
-((Get-Content -path src\Microsoft.Solutions.PatientHub.BatchInferenceService.Host\appsettings.json.template -Raw) -replace '{DBConnectionString}', $connectionString) | Set-Content -Path src\Microsoft.Solutions.PatientHub.BatchInferenceService.Host\appsettings.json
-((Get-Content -path src\Microsoft.Solutions.PatientHub.BatchInferenceService.Host\appsettings.json -Raw) -replace '{DatabaseName}', $azurecosmosdbDataBaseName) | Set-Content -Path src\Microsoft.Solutions.PatientHub.BatchInferenceService.Host\appsettings.json
-
-#
 # CognitiveService
 #
 ((Get-Content -path src\Microsoft.Solutions.PatientHub.CognitiveService.Host\appsettings.json.template -Raw) -replace '{DBConnectionString}', $connectionString) | Set-Content -Path src\Microsoft.Solutions.PatientHub.CognitiveService.Host\appsettings.json
@@ -105,12 +99,6 @@ $connectionString = az cosmosdb keys list `
 ((Get-Content -path src\Microsoft.Solutions.PatientHub.RealtimeInferenceService.Host\appsettings.json -Raw) -replace '{MLserviceUrl}', $mlServiceURL) | Set-Content -Path src\Microsoft.Solutions.PatientHub.RealtimeInferenceService.Host\appsettings.json
 ((Get-Content -path src\Microsoft.Solutions.PatientHub.RealtimeInferenceService.Host\appsettings.json -Raw) -replace '{MLServiceBearerToken}', $MLServiceBearerToken) | Set-Content -Path src\Microsoft.Solutions.PatientHub.RealtimeInferenceService.Host\appsettings.json
 
-#
-# ChangeFeedWatcherService
-#
-((Get-Content -path src\Microsoft.Solutions.PatientHub.BatchInference.ChangefeedWatcherWorker\appsettings.json.template -Raw) -replace '{DBConnectionString}', $connectionString) | Set-Content -Path src\Microsoft.Solutions.PatientHub.BatchInference.ChangefeedWatcherWorker\appsettings.json
-((Get-Content -path src\Microsoft.Solutions.PatientHub.BatchInference.ChangefeedWatcherWorker\appsettings.json -Raw) -replace '{DatabaseName}', $azurecosmosdbDataBaseName) | Set-Content -Path src\Microsoft.Solutions.PatientHub.BatchInference.ChangefeedWatcherWorker\appsettings.json
-
 
 Write-Host "Step 4 - Build Container and push Azure container registry...."
 
@@ -118,15 +106,11 @@ Write-Host "Step 4 - Build Container and push Azure container registry...."
  Set-location ".\src"
 
 docker build -f .\Microsoft.Solutions.PatientHub.AppointmentService.Host\Dockerfile --rm -t 'patienthub/appointment' .
-docker build -f .\Microsoft.Solutions.PatientHub.BatchInferenceService.Host\Dockerfile --rm -t 'patienthub/batchinference' .
-docker build -f .\Microsoft.Solutions.PatientHub.BatchInference.ChangefeedWatcherWorker\Dockerfile --rm -t 'patienthub/changefeedwatcher' .
 docker build -f .\Microsoft.Solutions.PatientHub.CognitiveService.Host\Dockerfile --rm -t 'patienthub/tts' .
 docker build -f .\Microsoft.Solutions.PatientHub.PatientService.Host\Dockerfile --rm -t 'patienthub/patient' .
 docker build -f .\Microsoft.Solutions.PatientHub.RealtimeInferenceService.Host\Dockerfile --rm -t 'patienthub/realtimeinference' .
 
 docker tag 'patienthub/appointment' "$containerRegistryName.azurecr.io/patienthub/appointment"
-docker tag 'patienthub/batchinference' "$containerRegistryName.azurecr.io/patienthub/batchinference"
-docker tag 'patienthub/changefeedwatcher' "$containerRegistryName.azurecr.io/patienthub/changefeedwatcher"
 docker tag 'patienthub/tts' "$containerRegistryName.azurecr.io/patienthub/tts"
 docker tag 'patienthub/patient' "$containerRegistryName.azurecr.io/patienthub/patient"
 docker tag 'patienthub/realtimeinference' "$containerRegistryName.azurecr.io/patienthub/realtimeinference"
@@ -136,8 +120,6 @@ docker login "$containerRegistryName.azurecr.io" -u $userName -p $password
 
 Write-Host "Push Images to ACS`r`n"
 docker push "$containerRegistryName.azurecr.io/patienthub/appointment"
-docker push "$containerRegistryName.azurecr.io/patienthub/batchinference"
-docker push "$containerRegistryName.azurecr.io/patienthub/changefeedwatcher"
 docker push "$containerRegistryName.azurecr.io/patienthub/tts"
 docker push "$containerRegistryName.azurecr.io/patienthub/patient"
 docker push "$containerRegistryName.azurecr.io/patienthub/realtimeinference"
