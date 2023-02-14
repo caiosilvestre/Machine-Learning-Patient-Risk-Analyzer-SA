@@ -9,9 +9,9 @@ This changes not include on deploy button. You will do manually
 |   Problems    |   Solutions   | Changes|
 | ------------- | ------------- |--------|
 | API Patient return ML erro  |Add 2 columns on PatientData.cs|Add FirstName and LastName on PatientData.cs|
-| Container ChangefeedWatcher not run| Replace with Azure functions | Add [Azure Function](Azure_Functions/Readme.md) with CosmoDB Trigger |
-| No Form recognizer Explanation | Add Explanation | ... |
-| No Power Virtual Agents Explanation | Add Explanation | ... |
+| Container ChangefeedWatcher not run| Replace with Azure functions | Add [Azure Function](Azure_Functions/Cosmos_change_feed/Readme.md) with CosmoDB Trigger |
+| No Form recognizer Explanation | Add [Azure Function](Azure_Functions/Func_with_flask/Readme.md) | Add [Azure Function](Azure_Functions/Func_with_flask/Readme.md)  with Http trigger|
+| No Power Virtual Agents Explanation | Create bot in Power Virtual Agents | ... |
 
 
 ___
