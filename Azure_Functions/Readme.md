@@ -51,12 +51,12 @@ insert a URL for API Service patient
 
 For example:
 
-{url_base} = http://127.00.223.322
+{UrlBaseAKS} = http://127.00.223.322
 
 ```python
 def score_update_patient(patientId,Prediction):
     #Create URL run API in AKS with http trigger
-    url = f"http://{{UrlBaseAKS}}/Patients/{patientId}/Score/{Prediction}"
+    url = f"http://{UrlBaseAKS}/Patients/{patientId}/Score/{Prediction}"
 ````
 
 ### Step 5. Run
