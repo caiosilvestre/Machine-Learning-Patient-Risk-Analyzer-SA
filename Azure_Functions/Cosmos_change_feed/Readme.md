@@ -51,7 +51,7 @@ insert a URL for API Service patient
 
 For example:
 
-{UrlBaseAKS} = http://127.00.223.322
+{UrlBaseAKS} = http://111.00.111.111
 
 ```python
 def score_update_patient(patientId,Prediction):
